@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class CypherViewModel( application: Application ): AndroidViewModel(application){
 
-    private val readAllData : LiveData<List<Cypher>>
+    val readAllData : LiveData<List<Cypher>>
     private val repository : CypherRepository
 
     init {

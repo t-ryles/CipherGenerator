@@ -46,6 +46,7 @@
         android:autofillHints="Length"
         android:hint="@string/hint_length"
         android:inputType="phone"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/passwordOutput"
         app:layout_constraintStart_toStartOf="@+id/passwordOutput"
         app:layout_constraintTop_toBottomOf="@+id/passwordOutput" />

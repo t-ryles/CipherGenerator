@@ -17,8 +17,6 @@ import java.util.*
 
 class AddCypherFragment : Fragment() {
 
-    //private lateinit var viewModel : CypherViewModel
-
     private lateinit var cypherTitle : EditText
     private lateinit var cypherPassword : EditText
     private lateinit var cypherLength : EditText
@@ -32,6 +30,7 @@ class AddCypherFragment : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_add_cypher, container, false)
 
+        //Linking views to variables
         cypherTitle = view.findViewById(R.id.passwordTitle)
         cypherPassword = view.findViewById(R.id.passwordOutput)
         cypherLength = view.findViewById(R.id.lengthInput)
@@ -64,6 +63,7 @@ class AddCypherFragment : Fragment() {
         }
 
         //Floating Action Button
+        //Navigate to the recycler view with list of passwords
         view.findViewById<FloatingActionButton>(R.id.listButton).setOnClickListener {
             findNavController().navigate(R.id.action_addCypherFragment_to_cypherListFragment)
         }
@@ -86,6 +86,7 @@ class AddCypherFragment : Fragment() {
     }
 
     //Generate the password once the enter length is valid
+    //TODO : create options for password complexity
     private fun generateCypher(length : Int) {
         val specialChars = listOf('!', '@', '#', '$', '%', '^', '&', '*', '(', ')')
         val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9') + specialChars
@@ -110,10 +111,9 @@ class AddCypherFragment : Fragment() {
         val newCypher = Cypher(0, title, password)
 
         CypherViewModel(requireActivity().application).addCypher(newCypher)
-        //viewModel.addCypher(newCypher)
-
 
         Toast.makeText(requireContext(), "Added Cypher to Database", Toast.LENGTH_SHORT).show()
+        //Navigate to list view of passwords
         findNavController().navigate(R.id.action_addCypherFragment_to_cypherListFragment)
     }
 }
